@@ -6,4 +6,4 @@ def landingPage(request):
 
 
 def lessonView(request):
-	pass
+	return render(request, 'lesson.html')

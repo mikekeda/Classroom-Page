@@ -18,7 +18,7 @@ from django.contrib import admin
 from views import *
 
 urlpatterns = [
-    url(r'^admin/', admin.site.urls),
+    url(r'^lesson/', lessonView),
     url(r'^', landingPage),
-    url(r'^lesson/', lessonView)
+    url(r'^admin/', admin.site.urls)
 ]
