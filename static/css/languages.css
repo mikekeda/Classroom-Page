@@ -1,0 +1,5 @@
+body:not(.en) :lang(en), 
+body:not(.it) :lang(it), 
+body:not(.fr) :lang(fr) { 
+    display: none; 
+}
