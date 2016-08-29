@@ -1,0 +1,19 @@
+{
+  "name": "classroom-page",
+  "version": "1.0.0",
+  "description": "This is the repository for all the content of the Classroom at DataNature",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "python manage.py runserver",
+    "postinstall": "bower install"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/DataNature/Classroom-Page.git"
+  },
+  "author": "",
+  "homepage": "https://github.com/DataNature/Classroom-Page#readme",
+  "dependencies": {
+    "bower": "^1.7.9"
+  }
+}

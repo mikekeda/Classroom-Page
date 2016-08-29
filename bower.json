@@ -1,0 +1,17 @@
+{
+  "name": "Classroom-Page",
+  "homepage": "https://github.com/DataNature/Classroom-Page",
+  "description": "",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "static/components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "jquery": "^3.1.0",
+    "bootstrap": "^3.3.7"
+  }
+}

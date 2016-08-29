@@ -93,3 +93,8 @@ ENV/
 *.sqlite3
 
 .idea/
+
+node_modules/
+static/components
+
+.sass-cache
