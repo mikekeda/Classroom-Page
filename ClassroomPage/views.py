@@ -5,5 +5,7 @@ def landingPage(request):
 	return render(request, 'landing.html')
 
 
-def lessonView(request):
-	return render(request, 'lesson.html')
+def lessonView(request, lessonID):
+	params = {}
+	params['lessonID'] = lessonID
+	return render(request, 'lesson.html', params)

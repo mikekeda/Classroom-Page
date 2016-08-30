@@ -81,8 +81,13 @@
                 <div class="col-sm-6">
                     <h1>HTML LESSONS HERE</h1>
                 </div>
+                <h3>Code Editor</h3>
                 <div class="col-sm-5">
-                    <h1>CODE EDITOR HERE<h1>
+                   <div id="editor">function foo(items) {
+                        var x = "All this is syntax highlighted";
+                        return x;
+                    }</div>
+                    <input id="button" type="submit" value="Submit!" /> 
                 </div>
             </div>
         </div>
@@ -109,6 +114,14 @@
     
     <!-- Theme JavaScript -->
     <script src="{% static "js/theme.js" %}"></script>
+
+    <script src="{% static "js/src-noconflict/ace.js" x%}" type="text/javascript" charset="utf-8"></script>
+    
+    <script>
+        var editor = ace.edit("editor");
+        editor.setTheme("ace/theme/monokai");
+        editor.getSession().setMode("ace/mode/javascript");
+    </script>
 
 </body>
 
