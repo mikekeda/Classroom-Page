@@ -21,7 +21,7 @@ from User import views as user_views
 urlpatterns = [
     url(r'^$', landingPage, name='landingPage'),
     url(r'^lesson/(\d+)/$', lessonView, name='lessonView'),
-    url(r'^classroom/$', lessonView, name='classroom'),
+    url(r'^classroom/$', classroomView, name='classroom'),
     url(r'^login/$', user_views.login, name='login'),
 
     url(r'^admin/', admin.site.urls)
