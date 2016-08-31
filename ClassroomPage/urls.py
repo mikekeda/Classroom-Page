@@ -15,6 +15,9 @@ Including another URLconf
 """
 from django.conf.urls import url
 from django.contrib import admin
+from django.views.generic.edit import CreateView
+from django.contrib.auth.forms import UserCreationForm
+from django.urls import reverse_lazy
 from views import *
 from User import views as user_views
 
@@ -22,6 +25,11 @@ urlpatterns = [
     url(r'^$', landingPage, name='landingPage'),
     url(r'^lesson/(\d+)/$', lessonView, name='lessonView'),
     url(r'^login$', user_views.login, name='login'),
+    url('^register$', CreateView.as_view(
+        template_name='register.html',
+        form_class=UserCreationForm,
+        success_url=reverse_lazy('landingPage')
+    ), name='register'),
 
     url(r'^admin/', admin.site.urls)
 ]
