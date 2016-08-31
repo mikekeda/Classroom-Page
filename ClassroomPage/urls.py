@@ -16,9 +16,12 @@ Including another URLconf
 from django.conf.urls import url
 from django.contrib import admin
 from views import *
+from User import views as user_views
 
 urlpatterns = [
-    url(r'^lesson/(\d+)/$', lessonView),
-    url(r'^$', landingPage),
+    url(r'^$', landingPage, name='landingPage'),
+    url(r'^lesson/(\d+)/$', lessonView, name='lessonView'),
+    url(r'^login$', user_views.login, name='login'),
+
     url(r'^admin/', admin.site.urls)
 ]
