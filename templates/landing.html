@@ -48,6 +48,7 @@
                     </div>
                     <div class="col-md-6 col-md-offset-1">
                         <div class="container">
+                            {% if not user.is_authenticated %}
                             <div class="omb_login">
                                 <div class="row omb_socialButtons">
 
@@ -84,7 +85,7 @@
                                 <div class="row">
                                     <div class="col-xs-12 col-sm-6">
 
-                                        <form class="omb_loginForm" action="" autocomplete="off" method="POST">
+                                        <form class="omb_loginForm" action="{% url 'login' %}" autocomplete="off" method="POST">{% csrf_token %}
 
                                             <div class="input-group">
                                                 <span class="input-group-addon"><i class="fa fa-user"></i></span>
@@ -109,6 +110,7 @@
                                 </div>
 
                             </div>
+                            {% endif %}
                         </div>
                     </div>
                 </div>
