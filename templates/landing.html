@@ -30,6 +30,15 @@
                     <li>
                         <a class="page-scroll" href="#contact">{% trans "Contact" %}</a>
                     </li>
+                    {% if user.is_authenticated %}
+                    <li>
+                        <a class="" href="/admin/logout/">{% trans "Logout" %}</a>
+                    </li>
+                    {% else %}
+                    <li>
+                        <a class="" href="{% url 'register' %}">{% trans "Register" %}</a>
+                    </li>
+                    {% endif %}
                 </ul>
             </div>
             <!-- /.navbar-collapse -->
