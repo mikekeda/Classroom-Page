@@ -20,10 +20,11 @@ from User import views as user_views
 
 urlpatterns = [
     url(r'^$', landingPage, name='landingPage'),
-    url(r'^lesson/(\d+)/$', lessonView, name='lessonView'),
-    url(r'^classroom/$', classroomView, name='classroom'),
     url(r'^login/$', user_views.login, name='login'),
 
     url(r'^admin/', admin.site.urls),
     url(r'^markdownx/', include('markdownx.urls')),
+
+
+    url(r'^classroom/', include('classroom.urls', namespace='classroom'))
 ]

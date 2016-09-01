@@ -2,6 +2,7 @@
 {% load i18n %}
 {% block content %}
 
+
     <!-- Navigation -->
     <nav class="navbar navbar-custom navbar-fixed-top" role="navigation">
         <div class="container">
@@ -37,7 +38,7 @@
         <!-- /.container -->
     </nav>
 
-<!--lesson container-->
+    <!--lesson container-->
     {% load static %}
     <link href="{% static "css/lesson.css" %}" rel="stylesheet">
     <div class="lesson-container">
@@ -45,13 +46,17 @@
             <div class="row">
                 <div class="col-sm-6">
                     <h1>{% trans "HTML LESSONS HERE" %}</h1>
+                    {{ lesson.content }}
+                    <div id="content">
+                        {{ lesson.content }}
+                    </div>
                 </div>
                 <h3>{% trans "Code Editor" %}</h3>
                 <div class="col-sm-5">
-                   <div id="editor">def f(x):
-    return 42
-                   </div>
-                    <input id="button" type="submit" value="Submit!" />
+                    <div id="editor">def f(x):
+                        return 42
+                    </div>
+                    <input id="button" type="submit" value="Submit!"/>
                 </div>
             </div>
         </div>
@@ -62,7 +67,6 @@
         editor.setTheme("ace/theme/monokai");
         editor.getSession().setMode("ace/mode/python");
     </script>
-
 {% endblock %}
 
  
