@@ -1,7 +1,7 @@
 from __future__ import unicode_literals
 
 from django.db import models
-
+from markdownx.models import MarkdownxField
 
 class Timestamp(models.Model):
     """Abstract model to get the created, updated fields in each model by default"""
@@ -15,6 +15,7 @@ class Timestamp(models.Model):
 class Lesson(Timestamp):
     """Lesson model"""
     title = models.CharField(max_length=250)
+    content = MarkdownxField()
 
     def __unicode__(self):
         return str(self.id) + ' Lesson: ' + self.title

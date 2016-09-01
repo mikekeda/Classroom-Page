@@ -38,7 +38,8 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'User',
-    'classroom'
+    'classroom',
+    'markdownx'
 ]
 
 MIDDLEWARE = [
@@ -124,6 +125,8 @@ STATIC_URL = '/static/'
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, "static")
 ]
+
+STATIC_ROOT = 'staticfiles'
 
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
