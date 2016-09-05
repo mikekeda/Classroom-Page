@@ -18,21 +18,28 @@ from django.contrib import admin
 from django.views.generic.edit import CreateView
 from django.contrib.auth.forms import UserCreationForm
 from django.urls import reverse_lazy
+from django.conf import settings
 from views import *
 from User import views as user_views
 
 urlpatterns = [
-    url(r'^$', landingPage, name='landingPage'),
+    url(r'^$', landing_page, name='landing_page'),
     url(r'^login$', user_views.login, name='login'),
     url('^register$', CreateView.as_view(
         template_name='register.html',
         form_class=UserCreationForm,
-        success_url=reverse_lazy('landingPage')
+        success_url=reverse_lazy('landing_page')
     ), name='register'),
 
     url(r'^admin/', admin.site.urls),
+    url(r'', include('social.apps.django_app.urls', namespace='social')),
     url(r'^markdownx/', include('markdownx.urls')),
-
 
     url(r'^classroom/', include('classroom.urls', namespace='classroom'))
 ]
+
+if settings.DEBUG:
+    import debug_toolbar
+    urlpatterns += [
+        url(r'^__debug__/', include(debug_toolbar.urls)),
+    ]

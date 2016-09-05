@@ -37,9 +37,14 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+
+    'markdownx',
+    'widget_tweaks',
+    'debug_toolbar',
+    'social.apps.django_app.default',
+
     'User',
     'classroom',
-    'markdownx'
 ]
 
 MIDDLEWARE = [
@@ -50,6 +55,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'debug_toolbar.middleware.DebugToolbarMiddleware',
 ]
 
 ROOT_URLCONF = 'ClassroomPage.urls'
@@ -102,6 +108,7 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
+INTERNAL_IPS = ('127.0.0.1',)
 
 # Internationalization
 # https://docs.djangoproject.com/en/1.10/topics/i18n/
@@ -131,3 +138,64 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 MEDIA_URL = '/media/'
+
+AUTHENTICATION_BACKENDS = (
+    'social.backends.coursera.CourseraOAuth2',
+    'social.backends.facebook.FacebookAppOAuth2',
+    'social.backends.facebook.FacebookOAuth2',
+    'social.backends.github.GithubOAuth2',
+    'social.backends.google.GoogleOAuth',
+    'social.backends.google.GoogleOAuth2',
+    'social.backends.google.GoogleOpenId',
+    'social.backends.google.GooglePlusAuth',
+    'social.backends.google.GoogleOpenIdConnect',
+    'social.backends.linkedin.LinkedinOAuth',
+    'social.backends.linkedin.LinkedinOAuth2',
+    'social.backends.stackoverflow.StackoverflowOAuth2',
+    'social.backends.twitter.TwitterOAuth',
+    'social.backends.email.EmailAuth',
+    'social.backends.username.UsernameAuth',
+    'django.contrib.auth.backends.ModelBackend',
+)
+
+LOGIN_URL = '/login/'
+LOGIN_REDIRECT_URL = '/done/'
+URL_PATH = ''
+SOCIAL_AUTH_STRATEGY = 'social.strategies.django_strategy.DjangoStrategy'
+SOCIAL_AUTH_STORAGE = 'social.apps.django_app.default.models.DjangoStorage'
+SOCIAL_AUTH_GOOGLE_OAUTH_SCOPE = [
+    'https://www.googleapis.com/auth/drive',
+    'https://www.googleapis.com/auth/userinfo.profile'
+]
+# SOCIAL_AUTH_EMAIL_FORM_URL = '/signup-email'
+SOCIAL_AUTH_EMAIL_FORM_HTML = 'email_signup.html'
+SOCIAL_AUTH_EMAIL_VALIDATION_FUNCTION = 'app.mail.send_validation'
+SOCIAL_AUTH_EMAIL_VALIDATION_URL = '/email-sent/'
+SOCIAL_AUTH_USERNAME_FORM_HTML = 'username_signup.html'
+
+SOCIAL_AUTH_PIPELINE = (
+    'social.pipeline.social_auth.social_details',
+    'social.pipeline.social_auth.social_uid',
+    'social.pipeline.social_auth.auth_allowed',
+    'social.pipeline.social_auth.social_user',
+    'social.pipeline.user.get_username',
+    'app.pipeline.require_email',
+    'social.pipeline.mail.mail_validation',
+    'social.pipeline.user.create_user',
+    'social.pipeline.social_auth.associate_user',
+    'social.pipeline.debug.debug',
+    'social.pipeline.social_auth.load_extra_data',
+    'social.pipeline.user.user_details',
+    'social.pipeline.debug.debug'
+)
+
+SOCIAL_AUTH_FACEBOOK_KEY = '1030917030354324'
+SOCIAL_AUTH_FACEBOOK_SECRET = '9d1f0687ce3226230ea7b253efece29a'
+
+# SOCIAL_AUTH_TWITTER_KEY = 'yyy'
+# SOCIAL_AUTH_TWITTER_SECRET = 'yyy'
+
+# SOCIAL_AUTH_GOOGLE_OAUTH2_KEY = 'yyy'
+# SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET = 'yyy'
+
+# SITE_ID = 1

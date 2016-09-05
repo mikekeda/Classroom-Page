@@ -3,6 +3,7 @@ from __future__ import unicode_literals
 from django.db import models
 from markdownx.models import MarkdownxField
 
+
 class Timestamp(models.Model):
     """Abstract model to get the created, updated fields in each model by default"""
     created = models.DateTimeField(auto_now_add=True)
@@ -37,9 +38,3 @@ class Course(Timestamp):
 
     def __unicode__(self):
         return str(self.id) + ' Course: ' + self.title
-
-
-
-
-
-

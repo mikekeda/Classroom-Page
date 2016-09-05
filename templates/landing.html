@@ -1,5 +1,6 @@
 {% extends "base.html" %}
 {% load i18n %}
+{% load widget_tweaks %}
 {% block content %}
 
 <!-- Navigation -->
@@ -36,7 +37,10 @@
                     </li>
                     {% else %}
                     <li>
-                        <a class="" href="{% url 'register' %}">{% trans "Register" %}</a>
+                        <a href="#" data-toggle="modal" data-target=".modal-login">{% trans "Login" %}</a>
+                    </li>
+                    <li>
+                        <a href="#" data-toggle="modal" data-target=".modal-register">{% trans "Register" %}</a>
                     </li>
                     {% endif %}
                 </ul>
@@ -55,68 +59,6 @@
                         <h1 class="brand-heading">DataNature</h1>
                         <p class="intro-text">Free online education in the fields of Machine Learning, Data Mining and Deep Learning.</p>
                     </div>
-                    <!-- The login will be used later when it works -->
-                    <!--div class="col-md-6 col-md-offset-1">
-                        <div class="container">
-                            <div class="omb_login">
-                                <div class="row omb_socialButtons">
-                                    
-                                    <div class="col-xs-4 col-sm-2">
-                                        <a href="#" class="btn btn-lg btn-block omb_btn-facebook">
-                                            <i class="fa fa-facebook visible-xs"></i>
-                                            <span class="hidden-xs">Facebook</span>
-                                        </a>
-                                    </div>
-                                    
-                                    <div class="col-xs-4 col-sm-2">
-                                        <a href="#" class="btn btn-lg btn-block omb_btn-twitter">
-                                            <i class="fa fa-twitter visible-xs"></i>
-                                            <span class="hidden-xs">Twitter</span>
-                                        </a>
-                                    </div>	
-                                    
-                                    <div class="col-xs-4 col-sm-2">
-                                        <a href="#" class="btn btn-lg btn-block omb_btn-google">
-                                            <i class="fa fa-google-plus visible-xs"></i>
-                                            <span class="hidden-xs">Google+</span>
-                                        </a>
-                                    </div>
-                                    
-                                </div>
-                                
-                                <div class="row omb_loginOr">
-                                    <div class="col-xs-12 col-sm-6">
-                                        <hr class="omb_hrOr">
-                                        <span class="omb_spanOr">OR</span>
-                                    </div>
-                                </div>
-
-                                <div class="row">
-                                    <div class="col-xs-12 col-sm-6">
-                                        
-                                        <form class="omb_loginForm" action="" autocomplete="off" method="POST">
-                                            
-                                            <div class="inputField">
-                                                <input type="text" id="username" placeholder="Email" required>
-                                            </div>
-                                            
-                                            <span class="help-block"></span>
-										
-                                            <div class="inputField">
-                                                <input type="password" id="password" placeholder="Password" required>
-                                            </div>
-                                            
-                                            <br>
-                                            <button class="btn btn-lg btn-primary btn-block" type="submit">Login</button>
-                                            
-                                        </form>
-                                        
-                                    </div>
-                                </div>
-                                
-                            </div>
-                        </div>
-                    </div-->
                     <div class="col-md-6 col-md-offset-1 explore">
                         <h3 class="text-center">Explore the course fields</h3>
                         <div class="col-md-4">
@@ -216,5 +158,117 @@
             </div>
         </div>
     </section>
+
+    <div class="modal fade modal-login" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel">
+        <div class="modal-dialog modal-lg" role="document">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="gridSystemModalLabel">Login</h4>
+            </div>
+            <div class="modal-content">
+                <!-- The login will be used later when it works -->
+                <div class="col-md-10 col-md-offset-1">
+                    <div class="container">
+                        <div class="omb_login">
+                            <div class="row omb_socialButtons">
+
+                                <div class="col-xs-4 col-sm-2">
+                                    <a href="{% url 'social:begin' 'facebook' %}" class="btn btn-lg btn-block omb_btn-facebook">
+                                        <i class="fa fa-facebook visible-xs"></i>
+                                        <span class="hidden-xs">Facebook</span>
+                                    </a>
+                                </div>
+
+                                <div class="col-xs-4 col-sm-2">
+                                    <a href="#" class="btn btn-lg btn-block omb_btn-twitter">
+                                        <i class="fa fa-twitter visible-xs"></i>
+                                        <span class="hidden-xs">Twitter</span>
+                                    </a>
+                                </div>
+
+                                <div class="col-xs-4 col-sm-2">
+                                    <a href="#" class="btn btn-lg btn-block omb_btn-google">
+                                        <i class="fa fa-google-plus visible-xs"></i>
+                                        <span class="hidden-xs">Google+</span>
+                                    </a>
+                                </div>
+
+                            </div>
+
+                            <div class="row omb_loginOr">
+                                <div class="col-xs-12 col-sm-6">
+                                    <hr class="omb_hrOr">
+                                    <span class="omb_spanOr">OR</span>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-xs-12 col-sm-6">
+
+                                    <form class="omb_loginForm" action="{% url 'login' %}" autocomplete="off" method="POST">
+                                        {% csrf_token %}
+
+                                        <div class="inputField">
+                                            <input type="text" id="username" name="username" placeholder="Email" required>
+                                        </div>
+
+                                        <span class="help-block"></span>
+
+                                        <div class="inputField">
+                                            <input type="password" id="password" name="password" placeholder="Password" required>
+                                        </div>
+
+                                        <br>
+                                        <button class="btn btn-lg btn-primary btn-block" type="submit">Login</button>
+
+                                    </form>
+
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade modal-register" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel">
+        <div class="modal-dialog modal-lg" role="document">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" >Register</h4>
+            </div>
+            <div class="modal-content">
+                <!-- The login will be used later when it works -->
+                <div class="col-md-10 col-md-offset-1">
+                    <div class="row">
+                        <form method="post" style="color: #777;">
+                            {% csrf_token %}
+                            {{ form.non_field_errors }}
+
+                            <div class="form-group">
+                                {{ form.username.errors }}
+                                {% trans "placeholder:Username" as placeholder_username %}
+                                {{ form.username|add_class:"form-control required"|attr:placeholder_username }}
+                            </div>
+                            <div class="form-group">
+                                {{ form.password1.errors }}
+                                {% trans "placeholder:Password" as placeholder_password %}
+                                {{ form.password1|add_class:"form-control required"|attr:placeholder_password }}
+                            </div>
+                            <div class="form-group">
+                                {{ form.password2.errors }}
+                                {% trans "placeholder:Confirm password" as placeholder_confirm_password %}
+                                {{ form.password2|add_class:"form-control required"|attr:placeholder_confirm_password }}
+                            </div>
+
+                            <button type="submit" class="btn btn-default">Submit</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 
 {% endblock %}

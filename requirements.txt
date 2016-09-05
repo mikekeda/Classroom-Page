@@ -1,5 +1,16 @@
 Django==1.10
+Markdown==2.6.6
 Pillow==3.3.1
+PyJWT==1.4.2
 argparse==1.2.1
-wsgiref==0.1.2
+-e git+https://github.com/django-debug-toolbar/django-debug-toolbar.git@e7a9ed0c3de1c8635f7e8c83349cb77cef42489f#egg=django_debug_toolbar-master
 django-markdownx==1.6.3
+django-widget-tweaks==1.4.1
+oauthlib==1.1.2
+python-openid==2.2.5
+python-social-auth==0.2.21
+requests==2.11.1
+requests-oauthlib==0.6.2
+six==1.10.0
+sqlparse==0.2.1
+wsgiref==0.1.2
