@@ -1,4 +1,5 @@
 from django.contrib.auth.models import auth
+from django.contrib.auth import logout as auth_logout
 from django.shortcuts import redirect
 
 
@@ -13,4 +14,10 @@ def login(request):
         if user is not None and user.is_active:
             auth.login(request, user)
 
+    return redirect('/')
+
+
+def logout(request):
+    """Logout."""
+    auth_logout(request)
     return redirect('/')

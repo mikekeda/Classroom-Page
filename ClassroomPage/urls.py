@@ -25,11 +25,12 @@ from User import views as user_views
 urlpatterns = [
     url(r'^$', landing_page, name='landing_page'),
     url(r'^login$', user_views.login, name='login'),
+    url(r'^logout$', user_views.logout, name='logout'),
     url('^register$', CreateView.as_view(
         template_name='register.html',
         form_class=UserCreationForm,
         success_url=reverse_lazy('landing_page')
-    ), name='register'),
+        ), name='register'),
 
     url(r'^admin/', admin.site.urls),
     url(r'', include('social.apps.django_app.urls', namespace='social')),

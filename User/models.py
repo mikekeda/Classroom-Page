@@ -3,7 +3,6 @@ from __future__ import unicode_literals
 from django.contrib.auth.models import User
 from django.utils.translation import ugettext as _
 from django.db import models
-from django.forms import ModelForm
 from django.conf import settings
 import os
 
@@ -34,17 +33,3 @@ class Profile(models.Model):
 
     def __unicode__(self):
         return u'Profile of user: %s' % self.user.username
-
-
-class ProfileForm(ModelForm):
-    """ProfileForm model"""
-    class Meta:
-        model = Profile
-        fields = ['picture', 'skype', 'phone_number', 'facebook_profile']
-
-
-class UserForm(ModelForm):
-    """UserForm model"""
-    class Meta:
-        model = User
-        fields = ['first_name', 'last_name', 'email']
